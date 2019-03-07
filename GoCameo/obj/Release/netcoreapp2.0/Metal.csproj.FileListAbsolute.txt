@@ -1,0 +1,12 @@
+I:\MyWork\Socialheit\Metal-React\Metal\bin\Release\netcoreapp2.0\Metal.deps.json
+I:\MyWork\Socialheit\Metal-React\Metal\bin\Release\netcoreapp2.0\Metal.runtimeconfig.json
+I:\MyWork\Socialheit\Metal-React\Metal\bin\Release\netcoreapp2.0\Metal.runtimeconfig.dev.json
+I:\MyWork\Socialheit\Metal-React\Metal\bin\Release\netcoreapp2.0\Metal.dll
+I:\MyWork\Socialheit\Metal-React\Metal\bin\Release\netcoreapp2.0\Metal.pdb
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\Metal.csproj.CoreCompileInputs.cache
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\Metal.AssemblyInfoInputs.cache
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\Metal.AssemblyInfo.cs
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\Metal.dll
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\Metal.pdb
+I:\MyWork\Socialheit\Metal-React\Metal\obj\Release\netcoreapp2.0\Metal.csprojResolveAssemblyReference.cache
