@@ -1,0 +1,43 @@
+﻿<ul class="nav navbar-nav">
+    @foreach (dynamic item in Startup.Menu.Property("Nav").FirstOrDefault())
+    {
+        @if (item.children.Count == 0 &&  Convert.ToString(item.showinmenu) == "True")
+        {
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="apps" asp-route-url="@item.Url.ToString()" title="@item.Title.ToString()">
+                    @if (item.WebIcon.ToString() != "")
+                    {
+                        <i class="mr-2 @item.WebIcon.ToString()"></i>
+                    }
+                    @item.Title.ToString()
+                </a>
+            </li>
+        }
+        else if (Convert.ToString(item.showinmenu) == "True")
+        {
+            <li class="nav-item custom-dropdown">
+                <a class="nav-link pointer sub d-flex" data-toggle="dropdown" href="#" title="@item.Title.ToString()">
+                    @if (item.WebIcon.ToString() != "")
+                    {
+                        <i class="mr-2 @item.WebIcon.ToString()"></i>
+                    }
+                    @item.Title.ToString()<i class="fa ml-auto right-icon fa-angle-down"></i>
+                </a>
+                <ul class="navbar-nav mr-auto">
+                    @foreach (var _item in item.children)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="apps" asp-route-url="@_item.Url.ToString()" title="@_item.Title.ToString()">
+                                @if (_item.WebIcon.ToString() != "")
+                                {
+                                    <i class="mr-2 @_item.WebIcon.ToString()"></i>
+                                }
+                                @_item.Title.ToString()
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    }
+</ul>

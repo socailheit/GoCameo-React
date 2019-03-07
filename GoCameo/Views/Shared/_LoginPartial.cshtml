@@ -1,0 +1,82 @@
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.Extensions.Options
+
+@inject IOptions<AzureAdB2COptions> AzureAdB2COptions
+
+@using System.Security.Principal
+
+@if (User.Identity.IsAuthenticated)
+{
+    <ul class="navbar-nav ml-auto">
+        @if (!string.IsNullOrEmpty(AzureAdB2COptions.Value.EditProfilePolicyId))
+        {
+            <li class="nav-item align-self-center"><span class="text-white">Welcome @User.Identity.Name!</span></li>
+        }
+        else
+        {
+            <li class="nav-item align-self-center">
+                <span class="text-white">Welcome, @User.Identity.Name!</span>
+            </li>
+        }
+        <li class="nav-item align-self-center">
+            <select class="roleDropdown" id="role" placeholder="Select Role" name="role" onchange="SwitchRole(this)">
+                @foreach (dynamic item in Startup.Roles)
+                {
+                    if (Startup.selectedRole.id == item.roleid.ToString())
+                    {
+                        <option selected value="@item.roleid.ToString()">@item.rolename.ToString()</option>
+
+                    }
+                    else
+                    {
+                        <option value="@item.roleid.ToString()">@item.rolename.ToString()</option>
+                    }
+                }
+            </select>
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link pointer">
+                <i class="fa fa-bell-o fa-lg"></i>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user-o fa-lg"></i>
+                <!--{{ActiveGroup}}-->
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" routerLinkActive="active" routerLink="onboard/create" *ngIf="canAccessProfile">Profile</a>
+                <a class="dropdown-item" routerLinkActive="active" routerLink="onboard/payment" *ngIf="canAccessPayment">Payment</a>
+                <a class="dropdown-item" routerLinkActive="active" routerLink="onboard/users" *ngIf="canAccessUsers">Users</a>
+                <a class="dropdown-item" routerLinkActive="active" routerLink="onboard/groups" *ngIf="canAccessGroups">Groups</a>
+                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['profile', 'changepassword']">Change Password</a>
+                <a class="dropdown-item pointer" asp-area="" asp-controller="Account" asp-action="SignOut">Logout</a>
+                <a class="dropdown-item disabled">Groups</a>
+                <a class="dropdown-item pointer" *ngFor="let row of GroupList" (click)="ChangeGroup(row)">{row}</a>
+            </div>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav ml-auto">
+        @*<li class="nav-item">
+                <a class="nav-link" href="signup">
+                    <i class="fa fa-user mr-1"></i>Register
+                </a>
+            </li>*@
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Signin">
+                <i class="fa fa-sign-in mr-1"></i>Login
+            </a>
+        </li>
+    </ul>
+}
+<script>
+    function SwitchRole(event) {
+        debugger;
+        var selectedRole = event.selectedOptions[0];
+        window.location.href = "/Home/SwitchRole?RoleId=" + selectedRole.value + "&RoleName=" + selectedRole.label;
+    }
+</script>

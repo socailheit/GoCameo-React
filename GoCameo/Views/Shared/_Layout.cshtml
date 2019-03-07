@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GoCameo @ViewData["title"]</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/assets/css/theme/bootstrap/css/gocameo-plugin.css">
+        <link rel="stylesheet" href="~/assets/css/theme/bootstrap/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/lib/external/quill.snow.min.css">
+        <link rel="stylesheet" href="~/lib/external/filepond/filepond-plugin-image-preview.css">
+        <link rel="stylesheet" href="~/lib/external/filepond/filepond.min.css">
+        <link rel="stylesheet" href="~/lib/external/react-datepicker/react-datepicker.min.css">
+        @*<link rel="stylesheet" href="~/css/site.css" />*@
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        @*<link rel="stylesheet" href="~/css/site.min.css"  asp-append-version="true"/>*@
+        <link rel="stylesheet" href="~/assets/css/theme/bootstrap/css/gocameo-plugin.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/assets/css/theme/bootstrap/css/font-awesome.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/lib/external/quill.snow.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/lib/external/filepond/filepond-plugin-image-preview.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/lib/external/filepond/filepond.min.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/lib/external/react-datepicker/react-datepicker.min.css" asp-append-version="true">
+    </environment>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/assets/js/site.js"></script>
+        <script src="~/lib/external/tinymce.min.js"></script>
+        <script src="~/assets/js/cameo.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/assets/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/lib/external/tinymce.min.js" asp-append-version="true"></script>
+        <script src="~/assets/js/cameo.js" asp-append-version="true"></script>
+        @*<script src="~/js/cameo.js"></script>*@
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+    @*<style>
+            @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i');
+            body{font-family: 'Lato', sans-serif;}
+        </style>*@
+
+    @*<link rel="stylesheet" href="~/css/theme/bootstrap/css/gocameo-plugin.css">
+    <link rel="stylesheet" href="~/css/theme/bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/theme/external/css/quill.snow.min.css">
+    <script src="~/css/theme/external/js/tinymce.min.js"></script>
+    <script src="~/js/cameo.js"></script>*@
+</head>
+<body>
+    <div class="nav-sidebar">
+        @*<div [ngBusy]="{busy: busy, message: 'Please wait ...', backdrop: true, delay: 500, minDuration: 1000}"></div>*@
+        <nav class="navbar navbar-expand navbar-dark bg-primary">
+            <a class="navbar-brand pointer" asp-area="" asp-controller="Home" asp-action="DefaultRedirect">
+                <img src="~/images/logo.png">
+            </a>
+            @await Html.PartialAsync("_LoginPartial")
+            
+        </nav>
+        <div id="mainMenu" class="aside-sidebar bg-dark">
+            @if (User.Identity.IsAuthenticated && Startup.Menu.Property("Nav") != null)
+            {
+            <a class="bg-primary text-white pointer toggelMenu" data-id="mainMenu" data-parent=".sidebar-container">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+            }
+            <nav class="custom-navbar">
+                @if (User.Identity.IsAuthenticated && Startup.Menu.Property("Nav") != null)
+                {
+                    @await Html.PartialAsync("_MenuPartial")
+                }
+
+            </nav>
+            <!--<a id="chatLink" class="pointer text-white text-center">
+              <i class="fa-2x fa fa-comment-o" style="bottom:20px;position: absolute; width:50px;" aria-hidden="true"></i>
+            </a>-->
+
+        </div>
+    </div>
+    <div class="sidebar-container">
+        @RenderBody()
+    </div>
+
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('body').on('click', ".custom-navbar .sub", function() {
+                if (!$(this).hasClass('active')) {
+                    $(this).addClass('active');
+                    $(this).find('.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-up');
+                    if (!$('.toggelMenu').hasClass('active')) {
+                        $('.toggelMenu').trigger("click");
+                    }
+                } else {
+                    $(this).removeClass('active');
+                    $(this).find('.fa-angle-up').removeClass('fa-angle-up').addClass('fa-angle-down')
+                }
+                return false;
+            });
+            $('body').on("click", ".toggelMenu", function () {
+                var targetId = '#' + $(this).attr('data-id');
+                var parent = $(this).attr('data-parent');
+
+                if (!$(this).hasClass('active')) {
+                    $(this).addClass('active');
+                    $(targetId).addClass('open');
+                    $(parent).css({
+                        'padding-left': '250px'
+                    });
+                    $('.custom-navbar').css({
+                        'width': '250px'
+                    });
+                } else {
+                    $(this).removeClass('active');
+                    $(targetId).removeClass('open');
+                    $(parent).css({
+                        'padding-left': '50px'
+                    });
+                    $('.custom-navbar').css({
+                        'width': '50px'
+                    });
+                    $('.custom-navbar .sub.active').trigger("click");
+                };
+            });
+        });
+    </script>
+</body>
+</html>
