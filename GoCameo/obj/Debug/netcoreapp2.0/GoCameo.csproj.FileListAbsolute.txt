@@ -10,3 +10,15 @@ I:\MyWork\Socialheit\GoCameo-React\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.Assem
 I:\MyWork\Socialheit\GoCameo-React\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.dll
 I:\MyWork\Socialheit\GoCameo-React\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.pdb
 I:\MyWork\Socialheit\GoCameo-React\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.csprojResolveAssemblyReference.cache
+D:\Project\Gocameo-react\GoCameo\bin\Debug\netcoreapp2.0\GoCameo.deps.json
+D:\Project\Gocameo-react\GoCameo\bin\Debug\netcoreapp2.0\GoCameo.runtimeconfig.json
+D:\Project\Gocameo-react\GoCameo\bin\Debug\netcoreapp2.0\GoCameo.runtimeconfig.dev.json
+D:\Project\Gocameo-react\GoCameo\bin\Debug\netcoreapp2.0\GoCameo.dll
+D:\Project\Gocameo-react\GoCameo\bin\Debug\netcoreapp2.0\GoCameo.pdb
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.csprojAssemblyReference.cache
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.csproj.CoreCompileInputs.cache
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.AssemblyInfoInputs.cache
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.AssemblyInfo.cs
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.dll
+D:\Project\Gocameo-react\GoCameo\obj\Debug\netcoreapp2.0\GoCameo.pdb

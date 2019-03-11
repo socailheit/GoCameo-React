@@ -67,7 +67,7 @@
     <script src="~/js/cameo.js"></script>*@
 </head>
 <body>
-    <div class="nav-sidebar">
+    <div class="nav-sidebar" >
         @*<div [ngBusy]="{busy: busy, message: 'Please wait ...', backdrop: true, delay: 500, minDuration: 1000}"></div>*@
         <nav class="navbar navbar-expand navbar-dark bg-primary">
             <a class="navbar-brand pointer" asp-area="" asp-controller="Home" asp-action="DefaultRedirect">
@@ -96,7 +96,7 @@
 
         </div>
     </div>
-    <div class="sidebar-container">
+    <div class="sidebar-container" style="padding-top:72px">
         @RenderBody()
     </div>
 
